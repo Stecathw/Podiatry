@@ -1,0 +1,254 @@
+/*---------------------------------------
+	GENERAL STYLE              
+-----------------------------------------*/
+
+.row {
+	margin-bottom: 100px;
+}
+.content {
+	background-color: var(--white);
+    padding: 26px 30px 0;
+} 
+
+.breadcrumb-container {
+	width: 100%;
+    margin: 23px 0 32px;
+	position: relative;
+    display: inline-block;
+    vertical-align: middle;
+	justify-content: center;
+}
+
+label {
+	vertical-align: middle;
+	justify-content: center;
+	text-align: center;
+    
+    color: var(--blue);
+    font-size: 1.6em;
+}
+
+.calendar-icon i, 
+.clock-icon i {
+	display: inline-block;
+    padding-right: 5px;
+}
+
+#available-services {
+	width: 100%;
+    min-width: 100%;
+}
+
+.info {
+	margin-top: 20px;
+	padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+#btn-form-nav {
+	position: relative;
+    display: flex;
+    vertical-align: middle;
+	justify-content: flex-end;
+    width: 100%;
+}
+
+#btn-form-validation {
+	
+	text-transform: uppercase;
+    font-size: 14px;
+	font-weight: bold;
+    padding: 0 20px;
+    border: 0;
+	border-radius: 5px;
+    min-height: 44px;
+    height: auto;
+    white-space: initial;
+	background-color: var(--green);
+	color: white;
+}
+#btn-form-validation:hover {
+	background-color: var(--blue);
+}
+
+
+textarea {
+	width: 100%;
+	margin: 20px 0;
+}
+
+span {
+	display: block;
+    font-size: 12px;
+    margin: 6px 0 6px;
+}
+
+/*---------------------------------------
+	BREADCRUMB GENERAL STYLE              
+-----------------------------------------*/
+
+.breadcrumb, .breadcrumb-bis {	
+	position: relative;
+	box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.35);
+	overflow: hidden;
+	border-radius: 5px;
+	margin: 0;
+	padding: 0;
+	/*Lets add the numbers for each link using CSS counters. flag is the name of the counter. to be defined using counter-reset in the parent element of the links*/
+	counter-reset: flag; 
+}
+
+.breadcrumb-bis {
+	display:none;
+}
+
+.breadcrumb a {
+	width: 25%;
+	text-decoration: none !important;
+	outline: none;
+	display: inline-block;
+	/* float: left; */
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 36px;
+	color: var(--white) !important;
+	/*need more margin on the left of links to accomodate the numbers*/
+	padding: 0 10px 0 60px;
+	background: #504f4f;
+	position: relative;
+	text-transform: uppercase;
+}
+.breadcrumb a::before {
+	text-align: center;
+}
+/*since the first link does not have a triangle before it we can reduce the left padding to make it look consistent with other links*/
+.breadcrumb a:first-child {
+	padding-left: 46px;
+	border-radius: 5px 0 0 5px; /*to match with the parent's radius*/	
+}
+.breadcrumb a:first-child:hover, 
+.breadcrumb a:first-child:focus {
+	cursor: pointer;
+}
+
+.breadcrumb a:first-child:before {
+	left: 10px;
+}
+.breadcrumb a:last-child {
+	border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
+	padding-right: 20px;
+}
+
+/*hover/active styles*/
+.breadcrumb a.active {
+	background: var(--blue) !important;
+	text-decoration: none;
+	color: var(--white);
+
+}
+.breadcrumb a.active:after {
+	background: var(--blue) !important;
+	text-decoration: none;
+	color: var(--white);
+
+}
+.breadcrumb a:hover,
+.breadcrumb a:hover:after {
+	text-decoration: none;
+	color: var(--white);
+	cursor: default;
+}
+
+
+/*adding the arrows for the breadcrumbs using rotated pseudo elements*/
+.breadcrumb a:after {
+	content: '';
+	position: absolute;
+	top: 0; 
+	right: -18px; 
+	width: 36px; 
+	height: 36px;
+	/*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's: 
+	length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+	if diagonal required = 1; length = 1/1.414 = 0.707*/
+	transform: scale(0.707) rotate(45deg);
+	z-index: 1;
+	background: #504f4f;
+
+}
+/*we dont need an arrow after the last link*/
+.breadcrumb a:last-child:after {
+	content: none;
+}
+/*we will use the :before element to show numbers*/
+.breadcrumb a:before {
+	content: counter(flag);
+	counter-increment: flag;
+	/*some styles now*/
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	margin: 8px 0;
+	position: absolute;
+	top: 0;
+	left: 30px;
+	background: #636161!important;
+	/* background: linear-gradient(#444, #222); */
+	font-weight: bold;
+}
+
+.breadcrumb a.active:before {
+	border-color: var(--white) !important;
+	background: var(--blue) !important;
+}
+
+
+/*---------------------------------------
+	RESPONSIVE STYLES              
+-----------------------------------------*/
+
+@media only screen and (max-width: 990px) {
+	.breadcrumb a {
+		font-size: 10px;
+	}	
+	#btn-form-nav {
+		justify-content: center;
+	}
+	.calendar, .hour {
+		text-align: center;
+	}
+}
+@media only screen and (max-width: 770px) {
+	.breadcrumb {
+		display: none;
+	}
+	.breadcrumb-bis {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+	.breadcrumb-bis a {
+		width: 100%;
+		text-decoration: none !important;
+		outline: none;
+		text-align: center;
+		padding-left: 20px;
+		/* float: left; */
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 36px;
+		color: var(--white) !important;
+		/*need more margin on the left of links to accomodate the numbers*/
+		/* padding: 0 10px 0 60px; */
+		background: #504f4f;
+		/* background: linear-gradient(#666, #333); */
+		position: relative;
+		text-transform: uppercase;
+	}
+	.breadcrumb-bis a.active {
+		background-color: var(--blue) !important;
+	}
+}

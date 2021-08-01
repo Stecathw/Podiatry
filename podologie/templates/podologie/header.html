@@ -1,0 +1,32 @@
+{% block header %}
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-5">
+                        <p>
+                        Bienvenue{% if user.is_authenticated %}, <strong>{{ user.username }}</strong>{% endif %}
+                        </p>                        
+                </div>                        
+                <div class="col-md-8 col-sm-7 text-align-right">
+                        <span class="phone-icon"><i class="fa fa-phone"></i> +33 6 45 45 45</span>
+                        <span class="date-icon"><i class="fa fa-calendar-plus-o"></i> 9:00h - 17:00h (Lundi-Vendredi)</span>
+                        <span class="compte-icon"><i class="fas fa-user"></i>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'podologie:mon_compte' %}">Mon compte</a>
+                            {% else %}
+                                <a href="{% url 'podologie:register' %}">M'enregristrer</a>
+                            {% endif %}
+                        </span>
+                        <span class="compte-icon">
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'podologie:logout' %}">Se déconnecter</a>
+                            {% else %}
+                                <a href="{% url 'podologie:login' %}">Se connecter</a>
+                            {% endif %}
+                        </span>                
+                </div>
+
+            </div>
+        </div>
+    </header>
+{% endblock %}

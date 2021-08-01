@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>AJ PODOLOGIE</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="icon" href="{% static 'podologie/images/favicon.ico' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- MAIN SLYLES -->
+    {% block stylesheet %}
+    {% endblock %}
+
+    <!-- DATEPICKER STYLE AND LIBRAIRY -->
+    {% block datepickerlib %}
+    {% endblock %}
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{% static 'podologie/css/tooplate-style.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+    <!-- HEADER -->
+    {% block header %}
+    {% endblock %}
+
+    {% block body %}
+    {% endblock %}
+
+    <!-- FOOTER -->
+    {% block footer %}
+    {% endblock %}
+
+    <!-- SCRIPTS -->    
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>

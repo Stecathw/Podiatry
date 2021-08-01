@@ -1,0 +1,55 @@
+{% extends "podologie/base.html" %}
+{% load static %}
+
+<!-- MAIN SLYLES -->
+{% block stylesheet %}
+    {% include 'podologie/stylesheet.html'%}
+{% endblock %}  
+
+<!-- HEADER -->
+{% block header %}
+    {% include 'podologie/header.html'%}    
+{% endblock %}
+
+{% block body %} 
+<section id="login" data-stellar-background-ratio="3"> 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <!-- LOGIN FORM HERE -->
+                <form action="{% url 'podologie:login' %}" method="post">
+                {% csrf_token %}
+                    <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                        <h2>Se connecter</h2>
+                    </div>
+                    {% if message %}
+                        <div>{{ message }}</div>
+                    {% endif %}
+                    <div class="wow fadeInUp" data-wow-delay="0.8s">
+                        <label for="username">Nom d'utlisateur</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+
+                        <label for="password">Mot de passe</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        
+                        <input class="form-control" id="submit" type="submit" value="Login">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <span>Pas encore enregistré ? <a href="{% url 'podologie:register' %}">M'enregistrer ici.</a></span> 
+                            </div>
+                            <div class="col-md-6 col-sm-6 text-right">  
+                                <span id="retour">Revenir sur le site <a href="{% url 'podologie:index' %}" >AJ PODOLOGIE</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </form> 
+            </div>               
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<!-- SCRIPTS -->    
+{% block scripts %}
+     {% include 'podologie/scripts.html' %}
+{% endblock %}

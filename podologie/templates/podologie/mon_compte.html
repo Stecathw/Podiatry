@@ -1,0 +1,60 @@
+{% extends 'podologie/base.html' %}
+{% load static %}
+
+
+<!-- DATEPICKER STYLE AND LIBRAIRY -->
+{% block datepickerlib %}
+    {% include 'podologie/datepickerlib.html' %}
+{% endblock %}
+
+<!-- HEADER -->
+{% block header %}
+    {% include 'podologie/header.html'%}    
+{% endblock %}
+
+{% block body %}
+    <section id="compte" data-stellar-background-ratio="3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <!-- SECTION TITLE -->
+                    <div class="header">
+                        <h2> Profile, {{ user.username }}</h2>            
+                    </div>
+
+                    <div class="content">
+                        <ul>
+                            <div class="col-md-12">
+                            <h4>Mes rendez-vous :</h4>
+                            {% if my_appointments %}
+                            {% for appointment in my_appointments %}  
+                                  
+                                <li id="{{ appointment.pk }}">   
+                                
+                                    {{ appointment.date | date:'d-m-Y' }}:
+                                    {{ appointment.motif }} |
+                                    {{ appointment.start_time | date:'H:i' }} à {{ appointment.end_time | date:'H:i' }}
+
+                                    <button class="form-control" id="supprimer" value="{{ appointment.pk }}">Annuler mon rdv</button>
+                                </li> 
+                            {% endfor %}
+                            {% else %} 
+                                AUCUN RDV 
+                                <button class="appointment-btn"><a href="{% url 'podologie:rdv' %}">Prendre rendez-vous</a></button> 
+                            {% endif %}
+                            <div>
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 text-center">  
+                    <span id="retour">Revenir sur le site <a href="{% url 'podologie:index' %}" >AJ PODOLOGIE</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'podologie/monCompte.js' %}"></script>  
+      
+{% endblock %}

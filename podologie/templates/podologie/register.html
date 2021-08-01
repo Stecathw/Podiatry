@@ -1,0 +1,58 @@
+{% extends "podologie/base.html" %}
+
+<!-- MAIN SLYLES -->
+{% block stylesheet %}
+    {% include 'podologie/stylesheet.html'%}
+{% endblock %}  
+
+<!-- HEADER -->
+{% block header %}
+    {% include 'podologie/header.html'%}   
+{% endblock %}
+
+{% block body %}
+<section id="register" data-stellar-background-ratio="3"> 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <!-- REGISTER FORM HERE -->
+                <form action="{% url 'podologie:register' %}" method="post">
+                {% csrf_token %}
+                    <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                        <h2>S'enregistrer</h2>
+                    </div>
+                    {% if message %}
+                        <div>{{ message }}</div>
+                    {% endif %}                
+                    <div class="wow fadeInUp" data-wow-delay="0.8s">
+                        <label for="username">Nom d'utlisateur</label>
+                        <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                        <label for="username">Nom</label>
+                        <input class="form-control" autofocus type="text" name="lastname" placeholder="Lastname">
+                        <label for="username">Email</label>
+                        <input class="form-control" type="email" name="email" placeholder="Adresse email">
+                        <label for="username">Mot de passe</label>
+                        <input class="form-control" type="password" name="password" placeholder="Password">
+                        <label for="username">Mot de passe</label>
+                        <input class="form-control" type="password" name="confirmation" placeholder="Confirmer">
+                        <input class="form-control" type="submit" id="submit" value="S'enregistrer">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <span>Déjà enregistré ?<a href="{% url 'podologie:login' %}">Log In ici.</a></span> 
+                            </div>
+                            <div class="col-md-6 col-sm-6 text-right">  
+                                <span id="retour">Revenir sur le site <a href="{% url 'podologie:index' %}" >AJ PODOLOGIE</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<!-- SCRIPTS -->    
+{% block scripts %}
+     {% include 'podologie/scripts.html' %}
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends 'podologie/base.html' %}
+{% load static %}
+
+
+<!-- DATEPICKER STYLE AND LIBRAIRY -->
+{% block datepickerlib %}
+    {% include 'podologie/datepickerlib.html' %}
+{% endblock %}
+
+<!-- HEADER -->
+{% block header %}
+    {% include 'podologie/header.html'%}    
+{% endblock %}
+
+{% block body %}
+    <section id="rdv" data-stellar-background-ratio="3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <!-- SECTION TITLE -->
+                    <div class="header">
+                        <h2>Formulaire de prise de rendez-vous</h2>
+                    </div>
+                    <div class="content">
+                        <div class="breadcrumb-container">
+                            <div class="breadcrumb">
+                                <a href="{% url 'podologie:rdv' %}" class="consult">Consultation</a>
+                                <a href="#" class="horaire">Horaire</a>
+                                <a href="#" class="information">Informations</a>
+                                <a href="#" class="validation">Validation</a>
+                            </div>  
+                            <div class="breadcrumb-bis">
+                                <a href="{% url 'podologie:rdv' %}" class="consult">1</a>
+                                <a href="#" class="horaire">2</a>
+                                <a href="#" class="information">3</a>
+                                <a href="#" class="validation">4</a>
+                            </div>       
+                        </div>
+                        <div id="page-1">
+                            <div id="consultation-form">
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="available-services">Veuillez sélectionner un motif de consultation ci-dessous :</label>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <select id="available-services">
+                                        {% for service in services %}
+                                            <option id="{{ service.id }}">{{service.motif}} </option> 
+                                        {% endfor %}                
+                                    </select>                                    
+                                    <div class="info">
+                                        <h4>Note du praticien</h4>
+                                        <p>
+                                            Apportez lors de votre rendez-vous : 
+                                            une paire de chaussure usée, vos chaussures de sport si le
+                                            motif de consultation est lié à votre sport et vos 
+                                            examens complémentaires tels que : radiographie, échographie,
+                                            IRM, etc
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="page-2">
+                            <div id="date-form">
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="rdv">Sélectionner une date de rendez-vous :</label>
+                                </div>
+                                <div class="col-md-12 col-sm-12 calendar">
+                                    <span class="calendar-icon"><i class="fas fa-calendar-alt"></i><input id="datepicker" type="text" autocomplete="off"/></span>
+                                    <div id="message" class="text-muted">Pas de créneaux disponibles. Veuillez sélectionner une date valide.</div>
+                                </div>                    
+                            </div>
+                            <div id="slot-form"> 
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="available-timeslots">Sélectionner une heure de rendez-vous :</label>
+                                </div>
+                                <div class="col-md-12 col-sm-12 hour">
+                                    <span class="clock-icon"><i class="far fa-clock"></i><select id="available-timeslots"></select></span>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h4>Note du praticien</h4>
+                                <p>
+                                    Les créneaux disponibles s'affichent ici suivant la date et le motif de consultation
+                                    choisi. Si aucun créneau horaire n'est disponible, sélectionner une nouvelle date.
+                                </p>
+                            </div>
+                        </div>
+                        <div id="page-3">
+                            <div class="col-md-12 col-sm-12 text-center">
+                                <label for="service-confirm">Votre rendez-vous :</label>
+                            </div>
+                            <div class="col-md-12 col-sm-12 text-center mb-4">
+                                {% if user.is_authenticated %}
+                                    <h5>{{ user.username }}</h5>
+                                {% else %}
+                                    <p>Pour poursuivre vous devrez vous connecter.</p>
+                                {% endif %}
+                                <div id="service-confirm"></div>
+                                <div id="date-confirm"></div>
+                                <div id="slot-confirm"></div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 text-center">
+                                <label for="precisions">Laisser un mot à mon praticien (facultatif):</label>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <textarea type="text" id="precisions" max_length="240"></textarea> 
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <span>
+                                    Cette note est uniquement à but informatif pour votre rendez vous, et ne peut contenir de symptômes médicaux.
+                                    En cas d’urgence téléphonez directement à votre praticien ou aux urgences. Ceci n'est pas un mail et n'implique pas de réponse de votre praticien.
+                                </span>
+                            </div>
+                        </div> 
+
+                        {% if user.is_authenticated %}
+                            <div id="page-4">
+                                <div class="col-md-12 col-sm-12">
+                                    <p>
+                                        Un email de confirmation a été envoyé à votre adresse.
+                                        Vous pouvez consulter vos rendez vous sur la page de <a href="{% url 'podologie:mon_compte' %}">votre compte.</a>
+                                    </p>
+                                </div>    
+                            </div> 
+
+                        {% else %}
+                            <div id="page-4">
+                                <div class="col-md-12 col-sm-12">
+                                <p>Pour valider votre rendez-vous, veuillez-vous <a href="{% url 'podologie:login' %}">connecter.</a></p>
+                                <p>Pas encore enregistré ? <a href="{% url 'podologie:register' %}">S'enregistrer</a></p>
+                                </div>
+                            </div>  
+                        {% endif %}
+
+                        <div id="btn-form-nav">
+                            {% comment %} <button id="btn-form-precedent"></button> {% endcomment %}
+                            <button id="btn-form-validation"></button>                
+                        </div> 
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 text-center">  
+                    <span id="retour">Revenir sur le site <a href="{% url 'podologie:index' %}" >AJ PODOLOGIE</a></span>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <script src="{% static 'podologie/form.js' %}"></script>     
+
+{% endblock %}

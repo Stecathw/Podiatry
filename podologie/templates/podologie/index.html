@@ -1,0 +1,300 @@
+{% extends "podologie/base.html" %}
+{% load static %}
+
+<!-- MAIN STYLES -->
+{% block stylesheet %}
+     {% include 'podologie/stylesheet.html'%}
+{% endblock %} 
+
+<!-- HEADER -->
+{% block header %}
+     {% include 'podologie/header.html'%}
+{% endblock %}
+
+<!-- INDEX -->
+{% block body %}
+
+    <!-- PRE LOADER -->
+    <section class="preloader">
+        <div class="spinner">
+            <span class="spinner-rotate"></span>               
+        </div>
+    </section>
+
+     <!-- MENU -->
+     <section class="navbar navbar-default navbar-static-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+                    {% comment %} ADD LOGO HERE {% endcomment %}
+                    <a href="{% url 'podologie:index' %}" class="navbar-brand">AJ PODOLOGIE</a>
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="#top" class="smoothScroll">Home</a></li>
+                         <li><a href="#podologie" class="smoothScroll">La Podologie</a></li>
+                         <li><a href="#fabrication" class="smoothScroll">L'atelier</a></li>
+                         <li><a href="#produits" class="smoothScroll">Nos produits</a></li>
+                         <li><a href="#google-map" class="smoothScroll">Contact</a></li>
+                         <li class="appointment-btn"><a href="{% url 'podologie:rdv' %}">Prendre rendez-vous</a></li>
+                    </ul>
+               </div>
+
+          </div>
+     </section>
+
+
+     <!-- HOME -->
+     <section id="home" class="slider" data-stellar-background-ratio="0.5" style="padding-top: 0 !important;">
+          <div class="container">
+               <div class="row">
+                         <div class="owl-carousel owl-theme">
+                              <div class="item item-first">
+                                   <div class="caption">
+                                        <div class="col-md-offset-1 col-md-10">
+                                             <h3>Prenez soins de vos pieds</h3>
+                                             <h1>Bilan podologique</h1>
+                                             <a href="#podologie" class="section-btn btn btn-default smoothScroll">Nos services</a>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="item item-second">
+                                   <div class="caption">
+                                        <div class="col-md-offset-1 col-md-10">
+                                             <h3>La fabrication sur-mesure</h3>
+                                             <h1>L'artisanat</h1>
+                                             <a href="#fabrication" class="section-btn btn btn-default btn-gray smoothScroll">Notre savoir-faire</a>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="item item-third">
+                                   <div class="caption">
+                                        <div class="col-md-offset-1 col-md-10">
+                                             <h3>Enfants, sportifs, adultes...</h3>
+                                             <h1>Une semelle pour chaque pied</h1>
+                                             <a href="#produits" class="section-btn btn btn-default btn-blue smoothScroll">Nos produits</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+               </div>
+          </div>
+     </section>
+
+
+     <!-- PODOLOGIE -->
+     <section id="podologie">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-12 col-sm-12 text-center">
+                         <h2 class="wow fadeInUp" data-wow-delay="0.6s">Bilan podologique complet</h2>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                         <div class="col-md-6 col-sm-6">
+                              <div class="about-info">
+                                   <h4 class="wow fadeInUp" data-wow-delay="0.6s">Lorem ipsum</h4>
+                                   <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                        <p>Aenean luctus lobortis tellus, vel ornare enim molestie condimentum. Curabitur lacinia nisi vitae velit volutpat venenatis.
+                                        Sed a dignissim lacus. Quisque fermentum est non orci commodo, a luctus urna mattis. Ut placerat, diam a tempus vehicula.</p>
+                                   </div>                                   
+                              </div>
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <img src="{% static 'podologie/images/bilan-examen-podologique.jpg' %}" class="img-responsive" alt="">
+                         </div>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                         <div class="col-md-6 col-sm-6">
+                              <img src="{% static 'podologie/images/pieds-image.jpg' %}" class="img-responsive" alt="">
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <div class="about-info">
+                                   <h4 class="wow fadeInUp" data-wow-delay="0.6s">Lorem ipsum</h4>
+                                   <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                        <p>Aenean luctus lobortis tellus, vel ornare enim molestie condimentum. Curabitur lacinia nisi vitae velit volutpat venenatis.
+                                        Sed a dignissim lacus. Quisque fermentum est non orci commodo, a luctus urna mattis. Ut placerat, diam a tempus vehicula.</p>
+                                   </div>                                   
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+
+     <!-- FABRICATION -->
+     <section id="fabrication" data-stellar-background-ratio="1">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                         <div class="about-info">
+                              <h2 class="wow fadeInUp" data-wow-delay="0.1s">FABRICATION ARTISANALE</h2>
+                         </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-4 col-sm-6">
+                         <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
+                              <img src="{% static 'podologie/images/bureau-podologique.jpg' %}" class="img-responsive" alt="">                         
+                              <div class="about-info">
+                                   <h4 class="wow fadeInUp" data-wow-delay="0.6s">Lorem ipsum</h4>
+                                   <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                        <p>Aenean luctus lobortis tellus, vel ornare enim molestie condimentum. Curabitur lacinia nisi vitae velit volutpat venenatis.
+                                        Sed a dignissim lacus. Quisque fermentum est non orci commodo, a luctus urna mattis. Ut placerat, diam a tempus vehicula.</p>
+                                   </div>                                   
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                         <div class="team-thumb wow fadeInUp" data-wow-delay="0.4s">
+                              <img src="{% static 'podologie/images/semelles-podologique.jpg' %}" class="img-responsive" alt="">
+                              <div class="about-info">
+                                   <h4 class="wow fadeInUp" data-wow-delay="0.6s">Lorem ipsum</h4>
+                                   <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                        <p>Aenean luctus lobortis tellus, vel ornare enim molestie condimentum. Curabitur lacinia nisi vitae velit volutpat venenatis.
+                                        Sed a dignissim lacus. Quisque fermentum est non orci commodo, a luctus urna mattis. Ut placerat, diam a tempus vehicula.</p>
+                                   </div>                                   
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                         <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
+                              <img src="{% static 'podologie/images/ponçage-podologique.jpg' %}" class="img-responsive" alt="">
+                              <div class="about-info">
+                                   <h4 class="wow fadeInUp" data-wow-delay="0.6s">Lorem ipsum</h4>
+                                   <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                        <p>Aenean luctus lobortis tellus, vel ornare enim molestie condimentum. Curabitur lacinia nisi vitae velit volutpat venenatis.
+                                        Sed a dignissim lacus. Quisque fermentum est non orci commodo, a luctus urna mattis. Ut placerat, diam a tempus vehicula.</p>
+                                   </div>                                   
+                              </div>
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>
+
+
+     <!-- PRODUITS -->
+     <section id="produits" data-stellar-background-ratio="2.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <!-- SECTION TITLE -->
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                              <h2>PRODUITS SUR MESURE</h2>
+                         </div>
+                    </div>
+
+               <div class="row">
+                    <div class="col-md-12 col-sm-12">                         
+                         <div class="about-info">                                   
+                              <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                   <p>Aenean luctus lobortis tellus, vel ornare enim molestie condimentum. Curabitur lacinia nisi vitae velit volutpat venenatis.
+                                   Sed a dignissim lacus. Quisque fermentum est non orci commodo, a luctus urna mattis. Ut placerat, diam a tempus vehicula.</p>
+                              </div> 
+                              <img src="{% static 'podologie/images/bilan-examen-podologique.jpg' %}" class="img-responsive" alt="">
+                         </div>                   
+                    </div>
+               </div>
+
+                    {% comment %} <div class="col-md-4 col-sm-6">
+                         <!-- NEWS THUMB -->
+                         <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
+                              <a href="news-detail.html">
+                                   <img src="images/news-image1.jpg" class="img-responsive" alt="">
+                              </a>
+                              <div class="news-info">
+                                   <span>March 08, 2018</span>
+                                   <h3><a href="news-detail.html">About Amazing Technology</a></h3>
+                                   <p>Maecenas risus neque, placerat volutpat tempor ut, vehicula et felis.</p>
+                                   <div class="author">
+                                        <img src="images/author-image.jpg" class="img-responsive" alt="">
+                                        <div class="author-info">
+                                             <h5>Jeremie Carlson</h5>
+                                             <p>CEO / Founder</p>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- NEWS THUMB -->
+                         <div class="news-thumb wow fadeInUp" data-wow-delay="0.6s">
+                              <a href="news-detail.html">
+                                   <img src="images/news-image2.jpg" class="img-responsive" alt="">
+                              </a>
+                              <div class="news-info">
+                                   <span>February 20, 2018</span>
+                                   <h3><a href="news-detail.html">Introducing a new healing process</a></h3>
+                                   <p>Fusce vel sem finibus, rhoncus massa non, aliquam velit. Nam et est ligula.</p>
+                                   <div class="author">
+                                        <img src="images/author-image.jpg" class="img-responsive" alt="">
+                                        <div class="author-info">
+                                             <h5>Jason Stewart</h5>
+                                             <p>General Director</p>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- NEWS THUMB -->
+                         <div class="news-thumb wow fadeInUp" data-wow-delay="0.8s">
+                              <a href="news-detail.html">
+                                   <img src="images/news-image3.jpg" class="img-responsive" alt="">
+                              </a>
+                              <div class="news-info">
+                                   <span>January 27, 2018</span>
+                                   <h3><a href="news-detail.html">Review Annual Medical Research</a></h3>
+                                   <p>Vivamus non nulla semper diam cursus maximus. Pellentesque dignissim.</p>
+                                   <div class="author">
+                                        <img src="images/author-image.jpg" class="img-responsive" alt="">
+                                        <div class="author-info">
+                                             <h5>Andrio Abero</h5>
+                                             <p>Online Advertising</p>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div> {% endcomment %}
+
+               </div>
+          </div>
+     </section>
+
+     <!-- GOOGLE MAP -->
+     <section id="google-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17031.861978532113!2d2.3402979079718533!3d48.860634868947514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis!5e0!3m2!1sfr!2sfr!4v1626853079152!5m2!1sfr!2sfr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+     </section>
+
+{% endblock %}
+
+<!-- FOOTER -->
+{% block footer %}
+     {% include 'podologie/footer.html'%}
+{% endblock %}
+
+<!-- SCRIPTS -->    
+{% block scripts %}
+     {% include 'podologie/scripts.html' %}
+{% endblock %}
+
+

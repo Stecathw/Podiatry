@@ -1,0 +1,106 @@
+{% extends 'podologie/base.html' %}
+{% load static %}
+
+
+<!-- DATEPICKER STYLE AND LIBRAIRY -->
+{% block datepickerlib %}
+    {% include 'podologie/datepickerlib.html' %}
+{% endblock %}
+
+<!-- HEADER -->
+{% block header %}
+    {% include 'podologie/header.html'%}    
+{% endblock %}
+
+
+{% block body %}
+<section id="compte" data-stellar-background-ratio="3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                 <!-- SECTION TITLE -->
+                <div class="header">
+                    <h2> Profile, {{ user.username }}</h2>            
+                </div>
+
+                <div class="content">
+                    <div class="col-md-12 col-sm-12 text-center">
+                    <!-- SECTION CLOSE DAY -->
+                        <div class="fermetures">
+                            <h4>Vacances et fermetures</h4>
+                            <p>
+                                Choisir des dates de vacances ou de fermertures afin de bloquer des journées. 
+                                Les patients ne pourront pas réserver de créneaux sur ces journées.
+                            </p>
+                            {% comment %} <div class="col-md-12 col-sm-12 text-center"> {% endcomment %}
+                                <label for="from">Du</label>
+                                <input type="text" id="from" name="from" autocomplete="off">
+                                <label for="de">au (inclus)</label>
+                                <input type="text" id="to" name="to" autocomplete="off">
+                                <button id="valider" class="form-control">Valider</button>
+                                <div class="alternate-hidden" style="display: none;"> 
+                                    <input type="text" id="alternate_start">
+                                    <input type="text" id="alternate_end">
+                                </div>
+                            {% comment %} </div> {% endcomment %}
+                            <div id="message" class="text-muted">
+                                Les journées non sélectionnables sont déjà verouillées. 
+                                Pour les débloquer veuiller prendre contact avec l'administrateur.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">  
+                <div class="content">
+                    <h4>Mes prochains rendez-vous :</h4> 
+                        {% if my_appointments %}
+                            {% for appointment in my_appointments %}  
+                                  
+                                <li id="{{ appointment.pk }}">   
+                                
+                                    {{ appointment.date | date:'d-m-Y' }}:
+                                    {{ appointment.motif }} |
+                                    {{ appointment.start_time | date:'H:i' }} à {{ appointment.end_time | date:'H:i' }}
+                                    {{ appointment.patient }}
+                                </li> 
+                            {% endfor %}
+                        {% else %} 
+                            AUCUN RDV 
+                        {% endif %} 
+                    <div class="col-md-12 col-sm-12 text-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center sm mt-4">
+                                
+                                    {% if my_appointments.has_previous %}
+                                        {% comment %} <li class="page-item"><a class="page-link" href="?page=1"> Début</a></li > {% endcomment %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ my_appointments.previous_page_number }}">&laquo;Préc.</a></li >
+                                    {% endif %}
+
+                                    <li class="page-item">
+                                        Page {{ my_appointments.number }} sur {{ my_appointments.paginator.num_pages }}.
+                                    </li>
+
+                                    {% if my_appointments.has_next %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ my_appointments.next_page_number }}">Suiv.&raquo;</a></li >
+                                        {% comment %} <li class="page-item"><a class="page-link" href="?page={{ my_appointments.paginator.num_pages }}">Dernière. </a></li > {% endcomment %}
+                                    {% endif %}
+                                
+                            </ul>
+                        </nav>
+                    </div>        
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">  
+                <span id="retour">Revenir sur le site <a href="{% url 'podologie:index' %}" >AJ PODOLOGIE</a></span>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="{% static 'podologie/staff.js' %}"></script>  
+      
+{% endblock %}

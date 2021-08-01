@@ -1,0 +1,46 @@
+{% block footer %}
+<!-- FOOTER -->
+<footer data-stellar-background-ratio="5">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 col-sm-6 text-center">
+                <div class="footer-thumb"> 
+                    <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact Info</h4>
+                    <p>Fusce at libero iaculis, venenatis augue quis, pharetra lorem. Curabitur ut dolor eu elit consequat ultricies.</p>
+
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> 010-070-0170</p>
+                        <p><i class="fas fa-envelope"></i><a href="#"> info@company.com</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 text-center"> 
+                <div class="footer-thumb">
+                    <div class="opening-hours">
+                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">Horaires d'ouvertures</h4>
+                        <p>Lundi - Vendredi <span>9:00h - 17:00h</span></p>
+                        <p>Samedi <span>Sur demande</span></p>
+                        <p>Dimanche <span>Fermé</span></p>
+                        <button class="appointment-btn"><a href="{% url 'podologie:rdv' %}">Prendre rendez-vous</a></button>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 text-center border-top">
+                    <div class="col-md-10 col-sm-10">
+                        <div class="copyright-text"> 
+                            <p>Copyright &copy; AJ PODOLOGIE</p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2 text-align-center">
+                        <div class="angle-up-btn"> 
+                            <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
+                        </div>
+                    </div>   
+            </div>
+            
+        </div>
+    </div>
+</footer>
+{% endblock %}
