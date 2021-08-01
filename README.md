@@ -22,9 +22,9 @@ The website is at first a single page presentation of a podiatry clinic. Client 
 an image slider, sections to describe overall jobs, a contact section with a map localisation, a classic footer
 and all that responsive stuff.
 
-![alt tag](https://github.com/me50/Stecathw/blob/web50/projects/2020/x/capstone/podologie/static/podologie/images/home.png)
+![alt tag](https://github.com/Stecathw/Podiatry/blob/podologie/static/podologie/images/home.png)
 
-![alt tag](https://github.com/me50/Stecathw/blob/web50/projects/2020/x/capstone/podologie/static/podologie/images/footer.png)
+![alt tag](https://github.com/Stecathw/Podiatry/blob/main/podologie/static/podologie/images/footer.png)
 
 Complexity cames with the second requirement including several features. But the general purpose was to allow appointments and keep things as simple and lightest possible.
 (We are not building a hospital scheduler either with a huge DB) 
@@ -39,7 +39,7 @@ These are the primary features wanted:
 - 7/ Logged visitors (patient) can book an appointment and both the doctor and the patient will receive an email confirmation.
 - 8/ The make appointment page should also be fully responsive and a single page dynamic form.
 
-![alt tag](https://github.com/me50/Stecathw/blob/web50/projects/2020/x/capstone/podologie/static/podologie/images/form3.png)
+![alt tag](https://github.com/Stecathw/Podiatry/blob/main/podologie/static/podologie/images/form3.png)
 
 ### TECHNOLOGIES USED
 
@@ -69,11 +69,11 @@ This function is written under "views.py > def available_ts(request)" and "slots
 When validating an appointment a new appointment object is created and will be taken into account when another user is looking for its potential appointment at the same date.
 Appointments can only be taken between +1 day to +1 year from current date.
 
-![alt tag](https://github.com/me50/Stecathw/blob/web50/projects/2020/x/capstone/podologie/static/podologie/images/form2.png)
+![alt tag](https://github.com/Stecathw/Podiatry/blob/main/podologie/static/podologie/images/form2.png)
 
 After appointment creation and validation a email is sent to user.
 
-![alt tag](https://github.com/me50/Stecathw/blob/web50/projects/2020/x/capstone/podologie/static/podologie/images/mail.png)
+![alt tag](https://github.com/Stecathw/Podiatry/blob/main/podologie/static/podologie/images/mail.png)
 
 ### MODELS AND DB 
 
